@@ -1,0 +1,21 @@
+---
+title: "Shopify Development: Using Liquid syntax in Sass and compiling with Gulp"
+date: 2018-06-01
+tags:
+  - Sass
+  - Liquid
+  - Shopify
+  - Gulp
+---
+
+Recently a friend was having trouble developing a custom Shopify theme, specifically getting Sass to compile to Liquid when the Sass file contains Liquid variables.
+
+Using Sass interpolation you can easily add Liquid variables.
+
+```Sass
+
+h1 {
+  color: #{'"{{ header_color }}"'}
+}
+
+```
