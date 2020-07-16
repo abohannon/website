@@ -12,7 +12,7 @@ Recently a friend was having trouble developing a custom Shopify theme, specific
 
 Using [Sass interpolation](https://sass-lang.com/documentation/interpolation) you can easily add Liquid variables.
 
-```scss
+```scss:title=sass/main.scss
 h1 {
   color: #{'"{{ header_color }}"'};
 }
@@ -20,7 +20,7 @@ h1 {
 
 To add Liquid expressions, add them inside comments. (Note: This relies on a particular Gulp setting, described below in Gulp Setup)
 
-```scss
+```scss:title=sass/main.scss
 /* {% assign header_color = '#7ab55c' %} */
 h1 {
   color: #{'"{{ header_color }}"'};
@@ -38,7 +38,7 @@ h1 {
 
 Here's another example using Sass variables.
 
-```scss
+```scss:title=sass/main.scss
 $primary-color-brighter: calc(#{'"{{ "#7ab55c" | color_brightness }}"'} / 100);
 
 p {
@@ -65,7 +65,7 @@ npm install gulp gulp-autoprefixer gulp-rename gulp-replace gulp-sass
 
 Next create a file called `gulpfile.js` in the root of your project. In this file is where you will setup the plumbing to process your Sass file.
 
-```js:title=gulpfile.js {11}
+```js:title=gulpfile.js {12}
 var gulp = require("gulp");
 var sass = require("gulp-sass");
 var replace = require("gulp-replace");
