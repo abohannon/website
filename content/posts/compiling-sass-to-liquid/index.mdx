@@ -100,3 +100,10 @@ This entire file is important, but one particular line I want to point out is li
 You can find the available options for `gulp-sass` [here](https://github.com/sass/node-sass).
 
 Now, to compile your Sass on the fly, just run `gulp`. As you make changes, you should see the compiled code outputted to `/assets/theme.scss.liquid`. Any errors will be logged to the console with a description and line number.
+
+**Bonus:** if you want to avoid the CSS comment syntax from ending up in your `.liquid` file, you can chain these two `.replace` methods to your existing Gulp config.
+
+```js
+.pipe(replace('/*', ""))
+.pipe(replace('*/', ""))
+```
