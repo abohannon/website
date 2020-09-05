@@ -26,7 +26,7 @@ Third, relying on organizing PRs by manual naming conventions in the title suffe
 
 We'll start with PR Labeler which automatically labels your PRs based on a config.
 
-1. Create and checkout a branch called 'feature/pr-labeler` (this name will come in handy later)
+1. Create and checkout a branch called `feature/pr-labeler` (this name will come in handy later)
 2. Create the folder `.github` in your project's root directory
 3. Add a subfolder inside named `workflows`
 4. Create a file named `pr-labeler.yml` and paste the following config inside (checkout [the repo](https://github.com/TimonVS/pr-labeler-action) if you have additional questions beyond these instructions)
@@ -65,9 +65,15 @@ We'll start with PR Labeler which automatically labels your PRs based on a confi
 
    This configuration is for our repo at work, but the syntax is `<label name>: <branch name>`. The glob `*` at the end indicates that anything after the `/` should match.
 
-   Feel free to change this according to your needs, but for the sake of this tutorial please keep `feature: ["feature/*", "feat/*"]`.
+   Feel free to change this according to your needs, but for the sake of this tutorial please keep
 
-6. Add labels to match your config (if you don't them yet). For the sake of this tutorial, if you don't have a "feature" label, please create one.
+   ```
+   feature: ["feature/*", "feat/*"]
+   ```
+
+6. Add PR labels in GitHub to match your config (if you don't have them yet)
+
+   For the sake of this tutorial, if you don't have a "feature" label, please create one.
 
    ![Location of Labels](./pr-labeler-1.png)
    ![Labels View](./pr-labeler-2.png)
@@ -180,7 +186,7 @@ The Release Drafter setup is very similar to the steps we just went through.
 
 4. Commit, push, and open a PR for this branch
 
-   PR Labeler will start working to label this PR if you installed it with the steps above. If not, manually add a label to your PR that matches one of the labels in the config above, like "feature".
+   PR Labeler will start working to label this PR if you installed it with the steps above. If not, manually add a label to your PR that matches one of the labels in `release-drafter.yml` above, like "feature".
 
 5. If you haven't released before, create a manual release. If you have released before, skip to the next step.
 
@@ -198,7 +204,7 @@ The Release Drafter setup is very similar to the steps we just went through.
 
 6. Merge your PR into `master`
 
-   If you visit the "Actions" tab, you should see Release Drafter working. Once it's finished (takes about 1 minute for me), head back to your Releases view (`<username>/<repo name>/releases` if you've lost track of it) and you should see the new release draft with your PR categorized under the header that matches your PR label and a version bump that coincides with your version resolver config.
+   If you visit the "Actions" tab, you should see Release Drafter working. Once it's finished (takes about 1 minute for me), head back to your Releases view (`<username>/<repo name>/releases` if you've lost track of it) and you should see the new release draft with your PR categorized under the header that matches your PR label and a version bump that coincides with your version resolver config in `release-drafter.yml`.
 
    To publish the release, click on "Edit" next to the release, make any changes or add any comments you'd like, and click "Publish release"
 
