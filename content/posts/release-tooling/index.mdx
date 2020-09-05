@@ -67,7 +67,7 @@ We'll start with PR Labeler which automatically labels your PRs based on a confi
 
    Feel free to change this according to your needs, but for the sake of this tutorial please keep `feature: ["feature/*", "feat/*"]`.
 
-6. Add labels to match your config (if you don't them yet)
+6. Add labels to match your config (if you don't them yet). For the sake of this tutorial, if you don't have a "feature" label, please create one.
 
    ![Location of Labels](./pr-labeler-1.png)
    ![Labels View](./pr-labeler-2.png)
@@ -87,7 +87,8 @@ We'll start with PR Labeler which automatically labels your PRs based on a confi
 
 The Release Drafter setup is very similar to the steps we just went through.
 
-1. In the `.github/workflows` directory you created, create a file named `draft.yml` and paste the following
+1. If you followed the steps for PR Labeler above, create a branch that includes a label from your repo
+2. In the `.github/workflows` directory you created, create a file named `draft.yml` and paste the following
 
    ```yml
    name: Release Drafter
@@ -106,7 +107,7 @@ The Release Drafter setup is very similar to the steps we just went through.
              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
    ```
 
-2. In the `.github` root directory, create a file named `release-drafter.yml` and paste the following. (Remember to checkout [the Release Drafter repo](https://github.com/release-drafter/release-drafter) for more configuration options.)
+3. In the `.github` root directory, create a file named `release-drafter.yml` and paste the following starter config. (Remember to checkout [the Release Drafter repo](https://github.com/release-drafter/release-drafter) for more configuration options.)
 
    ```yml
    name-template: "v$RESOLVED_VERSION"
@@ -163,3 +164,15 @@ The Release Drafter setup is very similar to the steps we just went through.
    This config determines what the release draft will look like. This is what we use at work and it creates a release that looks like this:
 
    ![Release](./release.png)
+
+   You will likely want to modify this to your repo's needs. It should be straightforward on how to add/remove titles and labels.
+
+   The section titled `version-resolver` is the config that automatically bumps your release version. You can see that only PRs labeled with "major" or "breaking change" indicate a major release for us, while "minor" and "feature" indicate a minor release, and the rest indicate a patch release. You can (and probably should) leave some labels out of this config, or create one specifically called something like "hide from changelog", for changes that don't amount to anything significant enough to warrant a version bump.
+
+4. Commit, push, and open a PR for this branch
+
+   PR Labeler will start working to label this PR if you installed it with the steps above. If not, add a label to your PR that matches one of the labels in the config above.
+
+5. Merge your PR into `master`
+
+   If you visit the "Actions" tab, you should see Release Drafter working.
