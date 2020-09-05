@@ -169,10 +169,37 @@ The Release Drafter setup is very similar to the steps we just went through.
 
    The section titled `version-resolver` is the config that automatically bumps your release version. You can see that only PRs labeled with "major" or "breaking change" indicate a major release for us, while "minor" and "feature" indicate a minor release, and the rest indicate a patch release. You can (and probably should) leave some labels out of this config, or create one specifically called something like "hide from changelog", for changes that don't amount to anything significant enough to warrant a version bump.
 
+   Note the `name-template` and `tag-template` properties at the top.
+
+   ```yml
+   name-template: "v$RESOLVED_VERSION"
+   tag-template: "v$RESOLVED_VERSION"
+   ```
+
+   This should match your current release formatting (if you've released before). For example, this format matches releases with titles and tags in the format of `v1.0.0`. If you don't prepend with "v", remove it here. Or you might prepend with "Release", then replace "v" with "Release ".
+
 4. Commit, push, and open a PR for this branch
 
-   PR Labeler will start working to label this PR if you installed it with the steps above. If not, add a label to your PR that matches one of the labels in the config above.
+   PR Labeler will start working to label this PR if you installed it with the steps above. If not, manually add a label to your PR that matches one of the labels in the config above, like "feature".
 
-5. Merge your PR into `master`
+5. If you haven't released before, create a manual release. If you have released before, skip to the next step.
 
-   If you visit the "Actions" tab, you should see Release Drafter working.
+   Release Drafter's `name-template` needs to match the format of your existing releases to successfully bump your version. If you haven't released yet, there's nothing to match.
+
+   From your repo's main view, click "Create new release" in the right sidebar
+
+   ![Create new release](./release-2.png)
+
+   Enter `v1.0.0` in both the tag version and title and click "Publish Release".
+
+   Note: You're not required to use this format. Whatever format you use, make sure it's reflected in the `name-template` and `tag-template` properties in your Release Drafter template config.
+
+   ![New release](./release-3.png)
+
+6. Merge your PR into `master`
+
+   If you visit the "Actions" tab, you should see Release Drafter working. Once it's finished (takes about 1 minute for me), head back to your Releases view (`<username>/<repo name>/releases` if you've lost track of it) and you should see the new release draft with your PR categorized under the header that matches your PR label and a version bump that coincides with your version resolver config.
+
+   To publish the release, click on "Edit" next to the release, make any changes or add any comments you'd like, and click "Publish release"
+
+   And there you go. You have now automated your release workflow!
