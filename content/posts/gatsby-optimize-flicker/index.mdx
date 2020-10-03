@@ -1,0 +1,19 @@
+---
+title: "Add Google Optimize Anti-Flicker Snippet to Your Gatsby Site"
+date: 2020-07-15
+tags:
+  - Gatsby
+  - React
+  - Google Optimize
+  - A/B Testing
+---
+
+### The problem
+
+It's common that client-side A/B testing solutions often cause a flash of original content (FOOC) before the alternative experiment variant appears.
+At best it's a visual annoyance, at worst it taints your testing data and renders your experiment useless.
+
+This occurs because the page loads, with its structure and styling, before the A/B testing script is able to run and modify the DOM. Sometimes this happens so quickly you hardly notice it, but other times there is
+a very noticeable switch that occurs.
+
+### The solution
