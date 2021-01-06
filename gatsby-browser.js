@@ -14,7 +14,7 @@ export const onRouteUpdate = () => {
 export const wrapRootElement = ({ element }) => (
   <>
     <Helmet
-      meta={[{ property: "referrer", content: "origin-when-cross-origin" }]}
+      meta={[{ name: "referrer", content: "origin-when-cross-origin" }]}
     />
     {element}
   </>
