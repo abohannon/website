@@ -5,13 +5,21 @@ slug: "/test"
 
 #### adambohannon.me referrer policy: origin-when-cross-origin
 
+---
+
 referrer policy: none
 
 pretty urls: on
 
 [https://www.housecallpro.com/about](https://www.housecallpro.com/about)
 
+document.referrer = ""
+
 [https://www.housecallpro.com/about/](https://www.housecallpro.com/about/)
+
+document.referrer = "https://adambohannon.me/"
+
+---
 
 referrer policy: origin-when-cross-origin
 
@@ -19,7 +27,13 @@ pretty urls: on
 
 [https://www.housecallpro-staging.com/about](https://www.housecallpro-staging.com/about)
 
+document.referrer = ""
+
 [https://www.housecallpro-staging.com/about/](https://www.housecallpro-staging.com/about/)
+
+document.referrer = "https://adambohannon.me/"
+
+---
 
 referrer policy: origin-when-cross-origin
 
@@ -27,4 +41,8 @@ pretty urls: off
 
 [https://deploy-preview-1862--hcp-growth-preview.netlify.app/about](https://deploy-preview-1862--hcp-growth-preview.netlify.app/about)
 
+document.referrer = "https://adambohannon.me/"
+
 [https://deploy-preview-1862--hcp-growth-preview.netlify.app/about/](https://deploy-preview-1862--hcp-growth-preview.netlify.app/about/)
+
+document.referrer = "https://adambohannon.me/"
