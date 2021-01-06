@@ -1,3 +1,6 @@
+import React from "react";
+import Helmet from "react-helmet";
+
 // Activates Google Optimize experiments
 const activateOptimize = () => {
   window.dataLayer = window.dataLayer || [];
@@ -7,3 +10,12 @@ const activateOptimize = () => {
 export const onRouteUpdate = () => {
   activateOptimize();
 };
+
+export const wrapRootElement = ({ element }) => (
+  <>
+    <Helmet
+      meta={[{ property: "referrer", content: "origin-when-cross-origin" }]}
+    />
+    {element}
+  </>
+);
