@@ -66,6 +66,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-netlify`,
+    {
+      resolve: "gatsby-plugin-netlify",
+      options: {
+        headers: {
+          "/*": ["Referrer-Policy: origin-when-cross-origin"],
+        },
+      },
+    },
   ],
 };
